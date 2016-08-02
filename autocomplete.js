@@ -243,7 +243,7 @@ export default class AutoComplete extends React.Component {
 
   renderList() {
     let showNew = this.isNewOptionShown()
-    if (this.state.filteredOptions.length === 0 && !showNew) {
+    if (!this.state.open || this.state.filteredOptions.length === 0 && !showNew) {
       return null
     } else {
       let list= _.map(this.renderOption, this.state.filteredOptions);
@@ -251,7 +251,7 @@ export default class AutoComplete extends React.Component {
         list.push(this.renderCreateOption())
       }
 
-      return <div className={`results ${!this.state.open? 'hide': ''}`}>
+      return <div className='results'>
         <ul
           ref='scroller'
           className="result-list"
